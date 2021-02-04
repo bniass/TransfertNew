@@ -39,12 +39,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginEdt, passwordEdt;
     private Button submit;
     private UserService userService;
+    private TextView msgTv;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginEdt = (EditText)findViewById(R.id.username);
         passwordEdt = (EditText)findViewById(R.id.password);
+        msgTv = (TextView)findViewById(R.id.msgTv);
 
         userService = ApiUtils.getAPIUserService();
 
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(response.isSuccessful()) {
                             if(response.body() == null){
                                 Log.i("e", "null");
+                                msgTv.setText("null");
                                 //Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_LONG).show();
                             }
                             else{
@@ -75,7 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                                     ApiUtils.init(response.body());
                                     Log.i("e", response.body());
                                     if(response.body().toString().equals("badcredentials")){
-                                        Toast.makeText(getApplicationContext(), "Login ou password incorrect !", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(getApplicationContext(), "Login ou password incorrect !", Toast.LENGTH_SHORT).show();
+                                        msgTv.setText("Login ou password incorrect !");
                                     }
                                     else {
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -91,12 +95,14 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else{
                             Log.i("e", "erreur");
-                            Toast.makeText(getApplicationContext(), " code : "+response.code(), Toast.LENGTH_SHORT).show();
+                            msgTv.setText("code : "+response.code());
+                           // Toast.makeText(getApplicationContext(), " code : "+response.code(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        msgTv.setText("Unable to submit post to API."+t.getMessage());
                         Log.e("e", "Unable to submit post to API."+t.getMessage());
                     }
                 });
