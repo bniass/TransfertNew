@@ -3,6 +3,7 @@ package com.example.transfertnew.service;
 
 import com.example.transfertnew.model.JwtRequest;
 import com.example.transfertnew.model.JwtResponse;
+import com.example.transfertnew.model.Response;
 
 import java.util.List;
 
@@ -17,8 +18,8 @@ import retrofit2.http.Query;
 public interface UserService {
 
     @POST("/authenticate")
-    Call<JwtResponse> connexion(@Body JwtRequest obj);
+    Call<Response> connexion(@Body JwtRequest obj);
 
     @POST("/login")
-    Call<String> login(@Body JwtRequest obj);
+    Call<Response> login(@Body JwtRequest obj);
 }

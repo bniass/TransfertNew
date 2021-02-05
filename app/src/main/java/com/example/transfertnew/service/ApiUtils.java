@@ -1,11 +1,13 @@
 package com.example.transfertnew.service;
 
+import com.example.transfertnew.model.Response;
+
 public class ApiUtils {
 
     private ApiUtils() {}
 
     public static final String BASE_URL = "http://10.0.2.2:8080/"; // 10.0.2.2
-    private static String token;
+    private static Response response;
 
 
     public static UserService getAPIUserService() {
@@ -13,11 +15,12 @@ public class ApiUtils {
     }
 
 
-    public static String init(String token) {
-        return com.example.transfertnew.service.ApiUtils.token = token;
+    public static void init(Response response) {
+        ApiUtils.response = response;
     }
 
-    public static String getToken() {
-        return token;
+    public static Response response() {
+        return response;
     }
+
 }

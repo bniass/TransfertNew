@@ -63,9 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             public void sendPost(final JwtRequest obj) throws Exception{
-                userService.login(obj).enqueue(new Callback<String>() {
+                userService.login(obj).enqueue(new Callback<com.example.transfertnew.model.Response>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(Call<com.example.transfertnew.model.Response> call, Response<com.example.transfertnew.model.Response> response) {
                         Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_LONG).show();
                         if(response.isSuccessful()) {
                             if(response.body() == null){
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                             else{
                                 try {
                                     ApiUtils.init(response.body());
-                                    Log.i("e", response.body());
+                                    Log.i("e", response.body().getData());
                                     if(response.body().toString().equals("badcredentials")){
                                         //Toast.makeText(getApplicationContext(), "Login ou password incorrect !", Toast.LENGTH_SHORT).show();
                                         msgTv.setText("Login ou password incorrect !");
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<com.example.transfertnew.model.Response> call, Throwable t) {
                         msgTv.setText("Unable to submit post to API."+t.getMessage());
                         Log.e("e", "Unable to submit post to API."+t.getMessage());
                     }
