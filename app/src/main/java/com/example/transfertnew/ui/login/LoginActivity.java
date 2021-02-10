@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.transfertnew.ActivityMain;
 import com.example.transfertnew.MainActivity;
 import com.example.transfertnew.R;
 import com.example.transfertnew.model.JwtRequest;
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else{
                                 try {
+                                    response.body().getUser().setUsername(loginEdt.getText().toString());
                                     ApiUtils.init(response.body());
                                     Log.i("e", response.body().getData());
                                     if(response.body().toString().equals("badcredentials")){
@@ -82,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                         msgTv.setText("Login ou password incorrect !");
                                     }
                                     else {
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(LoginActivity.this, ActivityMain.class);
                                         startActivity(intent);
                                     }
                                     //Toast.makeText(getApplicationContext(), response.body().toString().substring(0,19), Toast.LENGTH_SHORT).show();

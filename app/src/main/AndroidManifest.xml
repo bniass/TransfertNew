@@ -13,8 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TransfertNew">
         <activity
+            android:name=".ActivityMain"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.TransfertNew.NoActionBar">
+
+        </activity>
+        <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login">

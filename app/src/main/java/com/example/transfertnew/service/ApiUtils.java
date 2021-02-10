@@ -14,6 +14,10 @@ public class ApiUtils {
         return RetrofitClient.getClient(BASE_URL).create(UserService.class);
     }
 
+    public static OperationService getAPOperationService() {
+        return RetrofitClient.getClient(BASE_URL).create(OperationService.class);
+    }
+
 
     public static void init(Response response) {
         ApiUtils.response = response;

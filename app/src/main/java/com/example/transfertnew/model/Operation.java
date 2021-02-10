@@ -10,9 +10,9 @@ public class Operation {
     @SerializedName("id")
     private int id;
     @SerializedName("dateEnvoi")
-    private Date dateEnvoi;
+    private String dateEnvoi;
     @SerializedName("dateRecuperation")
-    private Date dateRecuperation;
+    private String dateRecuperation;
     @SerializedName("code")
     private String code;
     @SerializedName("montant")
@@ -48,15 +48,15 @@ public class Operation {
         this.id = id;
     }
 
-    public Date getDateEnvoi() {
+    public String getDateEnvoi() {
         return dateEnvoi;
     }
 
-    public void setDateEnvoi(Date dateEnvoi) {
+    public void setDateEnvoi(String dateEnvoi) {
         this.dateEnvoi = dateEnvoi;
     }
 
-    public Date getDateRecuperation() {
+    public String getDateRecuperation() {
         return dateRecuperation;
     }
 
@@ -68,7 +68,7 @@ public class Operation {
         this.code = code;
     }
 
-    public void setDateRecuperation(Date dateRecuperation) {
+    public void setDateRecuperation(String dateRecuperation) {
         this.dateRecuperation = dateRecuperation;
     }
 

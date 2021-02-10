@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
-
-    <!--  This is the title label -->
-
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <RelativeLayout
         android:id="@+id/relativeLayoutExp"
         android:layout_width="match_parent"
@@ -21,7 +17,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/numpieceExp"
+            android:id="@+id/telExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -35,14 +31,14 @@
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:ems="10"
-            android:hint="Numéro de pièce expéditeur"
-            android:inputType="textPersonName" />
+            android:hint="Téléphone expéditeur"
+            android:inputType="phone" />
 
         <EditText
             android:id="@+id/prenomExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/numpieceExp"
+            android:layout_above="@+id/telExp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="false"
@@ -79,7 +75,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/telExp"
+            android:id="@+id/numpieceExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/nomExp"
@@ -95,14 +91,14 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="-120dp"
             android:ems="10"
-            android:hint="Téléphone expéditeur"
+            android:hint="Numéro pièce expéditeur"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/numpieceDest"
+            android:id="@+id/telDest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/telExp"
+            android:layout_above="@+id/numpieceExp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
@@ -113,14 +109,14 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="-120dp"
             android:ems="10"
-            android:hint="Numéro de pièce destinataire"
-            android:inputType="textPersonName" />
+            android:hint="Téléphone destinataire"
+            android:inputType="phone" />
 
         <EditText
             android:id="@+id/prenomDest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/numpieceDest"
+            android:layout_above="@+id/telDest"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="false"
@@ -157,7 +153,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/telDest"
+            android:id="@+id/numpieceDest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/nomDest"
@@ -173,14 +169,15 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="-120dp"
             android:ems="10"
-            android:hint="Téléphone destinataire"
+            android:hint="Numéro de pièce destinataire"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/montant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/telDest"
+            android:inputType="number"
+            android:layout_above="@+id/numpieceDest"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="false"
@@ -193,14 +190,13 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="-120dp"
             android:ems="10"
-            android:hint="Montant à envoyer"
-            android:inputType="textPersonName" />
+            android:hint="Montant à envoyer" />
 
         <TextView
             android:id="@+id/frais"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/telDest"
+            android:layout_above="@+id/montant"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
@@ -210,7 +206,7 @@
             android:layout_marginTop="18dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginBottom="-155dp"
+            android:layout_marginBottom="-90dp"
             android:text="Frais : " />
 
         <Button
@@ -232,6 +228,4 @@
 
 
     </RelativeLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
