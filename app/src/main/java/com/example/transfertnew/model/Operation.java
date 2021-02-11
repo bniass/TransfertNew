@@ -1,12 +1,16 @@
 package com.example.transfertnew.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Operation {
+public class Operation implements Parcelable {
     @SerializedName("id")
     private int id;
     @SerializedName("dateEnvoi")
@@ -39,6 +43,23 @@ public class Operation {
 
     @SerializedName("userRemetteur")
     private User userRemetteur;
+
+    public Operation(Parcel in) {
+        id = in.readInt();
+        dateEnvoi = in.readString();
+        dateRecuperation = in.readString();
+        code = in.readString();
+        montant = in.readInt();
+        commission= in.readInt();
+        commissionDepot= in.readInt();
+        commissionRetrait= in.readInt();
+        commissionEtat= in.readInt();
+        commissionSysteme= in.readInt();
+        envoyeur = (Client) in.readParcelable(Client.class.getClassLoader());
+        destinataire = (Client) in.readParcelable(Client.class.getClassLoader());
+        userEnvoyeur = (User) in.readParcelable(User.class.getClassLoader());
+        userRemetteur = (User) in.readParcelable(User.class.getClassLoader());
+    }
 
     public int getId() {
         return id;
@@ -153,7 +174,39 @@ public class Operation {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Parcelable.Creator<Operation> CREATOR = new Parcelable.Creator<Operation>() {
+        public Operation createFromParcel(Parcel in) {
+            return new Operation(in);
+        }
 
+        @Override
+        public Operation[] newArray(int size) {
+            return new Operation[0];
+        }
+    };
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(dateEnvoi);
+        dest.writeString(dateRecuperation);
+        dest.writeString(code);
+        dest.writeInt(montant);
+        dest.writeInt(commission);
+        dest.writeInt(commissionDepot);
+        dest.writeInt(commissionRetrait);
+        dest.writeInt(commissionEtat);
+        dest.writeInt(commissionSysteme);
+
+        dest.writeParcelable(envoyeur, flags);
+        dest.writeParcelable(destinataire, flags);
+        dest.writeParcelable(userEnvoyeur, flags);
+        dest.writeParcelable(userRemetteur, flags);
+    }
 }

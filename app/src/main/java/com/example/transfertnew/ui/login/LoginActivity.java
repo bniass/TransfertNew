@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                     else {
                                         Intent intent = new Intent(LoginActivity.this, ActivityMain.class);
+                                        
                                         startActivity(intent);
                                     }
                                     //Toast.makeText(getApplicationContext(), response.body().toString().substring(0,19), Toast.LENGTH_SHORT).show();

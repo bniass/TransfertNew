@@ -203,6 +203,14 @@ public class ActivityMain extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Operation> call, Response<Operation> response) {
                         Log.i("e", "ID OP : "+response.body().getId()+"");
+                        try {
+                            Intent intent = new Intent(ActivityMain.this, RecapEnvoiActivity.class);
+                            intent.putExtra("operation", response.body());
+                            startActivity(intent);
+                        }catch(Exception e){
+                            Log.e("errrrrrrrrrrrrrrrrrrrrr",e.getMessage());
+                        }
+
                     }
 
                     @Override
